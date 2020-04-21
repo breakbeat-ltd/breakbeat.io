@@ -10,16 +10,23 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+    <style>
+      .v {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+      }
+    </style>
+
+
     <title>{{ site.title }} | {{ site.description }}</title>
   </head>
   <body>
-    <div class="container min-vh-100">
-      <div class="row min-vh-100 justify-content-center align-items-center">
-        <div class="text-center">
-          <img src="images/breakbeat.png" class="img-fluid">
-          <h3>{{ site.description }}</h3>
-        </div>
-      </div>
+    <div class="v text-center">
+      <img src="images/breakbeat.png" class="img-fluid">
+      <h3>{{ site.description }}</h3>
     </div>
 
     <div class="container fixed-bottom text-center">
