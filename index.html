@@ -8,33 +8,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <title>{{ site.title }} | {{ site.description }}</title>
+    <style>
+      #header, #footer, #body {
+        padding-top: 20px;
+      }
+      #header, #footer {
+        background-color: #222228;       
+      }
+      #header p, #footer p {
+        color: #ddd;
+      }
+      #header {
+        padding-bottom: 10px;
+      }
+      #footer {
+        padding-top: 20px;
+      }
+      #breakbeat-logo {
+        max-height: 100px;
+        margin-bottom: 20px;
+        fill: #eee;
+      }
+      #listenlater-logo, #thompson-logo {
+        max-width: 200px;
+        background-color: white;
+      }
+      #listenlater-logo {
+        fill: #0e84b7;
+      }
+      #thompson-logo{
+        fill: #b7710e;
+      }
+      .app-title {
+        margin-bottom: 20px;
+      }
+      .blurb {
+        margin-top: 20px;
+      }
+      .col-sm {
+        margin: 10px;
+        padding: 20px;
+        background-color: lightgray;
+      }
+      .rounded-corner-mask {
+        border-radius: 20px;
+        overflow: hidden;
+      }
+    </style>
+
+    <title>{{ site.title }} • {{ site.subtitle }}</title>
   </head>
   <body>
-    <div class="container">
+    <div id="header" class="container-fluid">
       <div class="text-center">
-        <img src="images/breakbeat.png" class="img-fluid">
-        <h3>{{ site.description }}</h3>
+        <svg id="breakbeat-logo" width="100%" height="100%" viewBox="0 0 980 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+            <g transform="matrix(1,0,0,1,-470,-440)">
+                <g transform="matrix(10,0,0,10,-7570,-3910)">
+                    <path d="M902,435L825,435L825,455L902,455L902,435ZM824,435L804,435L804,455L824,455L824,435ZM819,449L809,449L809,450L819,450L819,449ZM854.193,449.952L854.521,449.057L857.535,449.057L857.863,449.952L863.697,449.952L863.697,446.878L865.816,449.952L873.261,449.952C873.818,449.952 874.323,449.88 874.776,449.736C875.228,449.592 875.611,449.383 875.925,449.109C876.238,448.836 876.479,448.505 876.648,448.117C876.726,447.939 876.785,447.752 876.827,447.556L876.827,449.952L885.407,449.952L885.735,449.057L888.749,449.057L889.077,449.952L895.165,449.952L895.165,442.611L897,442.611L897,440L890.047,440L890.047,442.611L891.882,442.611L891.882,449.087L888.436,440L886.048,440L882.796,448.575L882.796,447.341L880.005,447.341L880.005,446.192L882.646,446.192L882.646,443.715L880.005,443.715L880.005,442.611L882.691,442.611L882.691,440L876.827,440L876.827,446.104C876.798,445.98 876.761,445.865 876.715,445.759C876.591,445.471 876.454,445.232 876.305,445.043C876.126,444.824 875.927,444.645 875.708,444.506C875.847,444.387 875.972,444.237 876.081,444.058C876.171,443.909 876.255,443.723 876.335,443.499C876.414,443.275 876.454,443.004 876.454,442.686C876.454,442.238 876.372,441.848 876.208,441.514C876.044,441.181 875.815,440.903 875.522,440.679C875.228,440.455 874.875,440.286 874.462,440.172C874.05,440.057 873.594,440 873.097,440L865.577,440L863.697,442.298L863.697,440L860.474,440L860.474,448.575L857.221,440L854.834,440L851.581,448.575L851.581,447.341L848.791,447.341L848.791,446.192L851.432,446.192L851.432,443.715L848.791,443.715L848.791,442.611L851.477,442.611L851.477,440L845.613,440L845.613,449.164L844.196,446.67C844.444,446.49 844.668,446.272 844.867,446.013C845.036,445.784 845.19,445.496 845.33,445.148C845.469,444.799 845.539,444.377 845.539,443.879C845.539,443.253 845.427,442.698 845.203,442.216C844.979,441.733 844.668,441.328 844.27,441C843.872,440.671 843.402,440.423 842.86,440.254C842.318,440.085 841.729,440 841.092,440L837.66,440L837.66,446.104C837.632,445.98 837.594,445.865 837.549,445.759C837.424,445.471 837.287,445.232 837.138,445.043C836.959,444.824 836.76,444.645 836.541,444.506C836.681,444.387 836.805,444.237 836.914,444.058C837.004,443.909 837.089,443.723 837.168,443.499C837.248,443.275 837.287,443.004 837.287,442.686C837.287,442.238 837.205,441.848 837.041,441.514C836.877,441.181 836.648,440.903 836.355,440.679C836.061,440.455 835.708,440.286 835.296,440.172C834.883,440.057 834.428,440 833.93,440L830.036,440L830.036,449.952L834.094,449.952C834.651,449.952 835.156,449.88 835.609,449.736C836.061,449.592 836.444,449.383 836.758,449.109C837.071,448.836 837.312,448.505 837.481,448.117C837.559,447.939 837.619,447.752 837.66,447.556L837.66,449.952L840.839,449.952L840.839,447.43L842.331,449.952L854.193,449.952ZM869.203,440.349L869.203,449.296L865.965,444.551L869.203,440.349ZM818,447.2L808,447.2L808,448.2L818,448.2L818,447.2ZM833.468,447.61C834.224,447.61 834.602,447.321 834.602,446.744C834.602,446.167 834.224,445.879 833.468,445.879L833.11,445.879L833.11,447.61L833.468,447.61ZM872.635,447.61C873.391,447.61 873.769,447.321 873.769,446.744C873.769,446.167 873.391,445.879 872.635,445.879L872.276,445.879L872.276,447.61L872.635,447.61ZM856.699,446.864L856.028,445.118L855.356,446.864L856.699,446.864ZM887.913,446.864L887.242,445.118L886.57,446.864L887.913,446.864ZM819,445.4L809,445.4L809,446.4L819,446.4L819,445.4ZM840.839,444.894L841.003,444.894C841.381,444.894 841.701,444.809 841.965,444.64C842.229,444.471 842.36,444.188 842.36,443.79C842.36,443.392 842.229,443.108 841.965,442.939C841.701,442.77 841.381,442.686 841.003,442.686L840.839,442.686L840.839,444.894ZM820,443.6L810,443.6L810,444.6L820,444.6L820,443.6ZM834.214,443.029C834.214,442.571 833.965,442.343 833.468,442.343L833.11,442.343L833.11,443.715L833.468,443.715C833.965,443.715 834.214,443.486 834.214,443.029ZM873.381,443.029C873.381,442.571 873.132,442.343 872.635,442.343L872.276,442.343L872.276,443.715L872.635,443.715C873.132,443.715 873.381,443.486 873.381,443.029ZM818,441.8L808,441.8L808,442.8L818,442.8L818,441.8ZM819,440L809,440L809,441L819,441L819,440Z"/>
+                </g>
+            </g>
+        </svg>
+        <p>{{ site.subtitle }}</p>
       </div>
-      <hr>
-      <div>
-        <h3>Jewel - Listen Later for Music</h3>
-        <h6>Coming soon to the Apple App Store!</h6>
-        <p>Jewel is a 'listen later' companion app for Apple Music. Heard about or remembered an album but not ready to listen?  Add it to your Jewel collection to play later!</p>
-        <p>Apple Music gives us access to all the music in the world -- but what should you listen too?</p>
-        <p>If you're anything like us, sometimes you're told about an album or remember a great one while doing something else - when you're not able to listen. Then, when the time is right, you've forgotten about them and end up listening to the same handful of albums you always have, or just hit shuffle on one of the playlists. Well no more!</p>
-        <p>Jewel gives you 8 slots in order to save any album from the Apple Music library - which is basically any album ever!  Add it to your collection when you first think about it, then when you're ready to listen - bam! - there it is waiting to be played!  It's like bookmarking for albums.</p>
-        <p>It's not just for new music either - maybe you've already curated a personal library of 100's of albums from the millions available on Apple Music, but still think 'what shall I listen to _right now_'?  Use Jewel as your rolling 'must plays' - a special collection if you will.</p>
-        <p>Or simply use Jewel to create an 'album playlist'.  Create a collection that represents an special event or theme - your favourite albums, a selection of summer albums, the ones you used to listen to at school, ones for that road trip - any collection so that you can easily find them within the rest of your library!</p>
-        <p>Jewel helps you remember to listen.</p>
-        <p>Question or need help?  Find us on Twitter - <a href="https://twitter.com/breakbeat_io">@breakbeat_io</a></p>
+    </div>
+    <div id="body" class="container">
+      <div class="row text-center">
+        <div class="col-sm rounded-corner-mask">
+          <h3 class="app-title">Listen Later</h3>
+          <div>
+            <svg class="rounded-corner-mask" id="listenlater-logo" width="100%" height="100%" viewBox="0 0 1025 1025" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;">
+                <g transform="matrix(1,0,0,1,0.5,0.5)">
+                    <path d="M0,0L1024,0L1024,1024L0,1024L0,0ZM421.333,240L502.4,179.2C507.248,175.564 513.735,174.979 519.155,177.689C524.576,180.399 528,185.94 528,192L528,237.365C689.397,245.677 817.524,379.003 817.524,542.476C817.524,711.318 680.842,848 512,848C343.158,848 206.476,711.318 206.476,542.476C206.476,533.639 213.639,526.476 222.476,526.476L283.429,526.476C292.266,526.476 299.429,533.639 299.429,542.476C299.429,660.099 394.377,755.048 512,755.048C629.623,755.048 724.571,660.099 724.571,542.476C724.571,430.24 638.121,338.65 528,330.497L528,374.857C528,380.917 524.576,386.458 519.155,389.168C513.735,391.878 507.248,391.293 502.4,387.657L421.333,326.857L421.333,374.857C421.333,380.917 417.909,386.458 412.488,389.168C407.068,391.878 400.581,391.293 395.733,387.657L273.829,296.229C269.8,293.207 267.429,288.465 267.429,283.429C267.429,278.393 269.8,273.651 273.829,270.629L395.733,179.2C400.581,175.564 407.068,174.979 412.488,177.689C417.909,180.399 421.333,185.94 421.333,192L421.333,240Z" />
+                </g>
+            </svg>
+          </div>
+          <p class="blurb">Listen Later is a reminder and album curation companion app for your music library. Save collections of albums for playback later.</p>
+          <a href="https://apps.apple.com/gb/app/jewel/id1510971905?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-gb/badge-lrg.svg?kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
+        </div>
+        <div class="col-sm rounded-corner-mask">
+          <h3 class="app-title">Thompson</h3>
+          <div>
+            <svg class="rounded-corner-mask" id="thompson-logo" width="100%" height="100%" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                <path d="M1024,0L0,0L0,1024L1024,1024L1024,0ZM400.305,642.811L560.726,642.811L560.726,768L400.305,768L400.305,642.811ZM400.305,620.322C400.305,596.834 403.803,576.469 410.799,559.227C417.796,541.985 425.542,526.868 434.038,513.874C442.534,500.88 450.28,489.136 457.277,478.641C464.273,468.146 467.772,457.652 467.772,447.157C467.772,437.661 465.773,430.04 461.775,424.293C457.776,418.546 452.529,414.048 446.032,410.799C439.535,407.551 431.914,405.427 423.168,404.428C414.423,403.428 405.302,402.928 395.807,402.928L380.064,402.928L380.064,263.496C389.06,261.997 396.931,260.748 403.678,259.748C410.425,258.749 416.547,257.999 422.044,257.499C427.541,257 432.914,256.625 438.161,256.375C443.408,256.125 449.531,256 456.527,256C485.013,256 510.751,259.623 533.739,266.87C556.728,274.116 576.344,284.486 592.586,297.98C608.828,311.473 621.447,327.715 630.442,346.706C639.438,365.696 643.936,386.686 643.936,409.675C643.936,431.664 639.563,451.53 630.817,469.271C622.071,487.012 612.451,504.129 601.956,520.621C591.461,537.113 581.841,553.355 573.095,569.347C564.349,585.339 559.977,602.331 559.977,620.322L400.305,620.322Z"/>
+            </svg>
+          </div>
+          <p class="blurb">Coming Soon - currently in development.<p>
+        </div>
+        <div class="col-sm rounded-corner-mask">
+          &nbsp;
+        </div>
       </div>
     </div>
 
-
-    <div class="container fixed-bottom text-center">
+    <div id="footer" class="container-fluid fixed-bottom text-center">
+      <p>
+        <a href="https://twitter.com/breakbeat_io" class="twitter-follow-button" data-size="large" data-dnt="true" data-show-count="false">Follow @breakbeat_io</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </p>
       <p class="initialism">&copy; BREAKBEAT LTD. 2020</p>
     </div>
     
