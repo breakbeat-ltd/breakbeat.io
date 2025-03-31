@@ -29,133 +29,135 @@
 		});
 
 	// Slideshow Background.
-		(function() {
+	(function() {
 
-			// Settings.
-				var settings = {
+		// Settings.
+			var settings = {
 
-					// Images (in the format of 'url': 'alignment').
-						images: {
-							'images/bg01.jpg': 'center',
-							'images/bg02.jpg': 'center',
-							'images/bg03.jpg': 'center'
-						},
+				// Images (in the format of 'url': 'alignment').
+					images: {
+						'images/bg01.jpg': 'center',
+						'images/bg02.jpg': 'center',
+						'images/bg03.jpg': 'center',
+						'images/bg04.jpg': 'center',
+						'images/bg05.jpg': 'center'
+					},
 
-					// Delay.
-						delay: 6000
+				// Delay.
+					delay: 6000
 
-				};
+			};
 
-			// Vars.
-				var	pos = 0, lastPos = 0,
-					$wrapper, $bgs = [], $bg,
-					k, v;
+		// Vars.
+			var	pos = 0, lastPos = 0,
+				$wrapper, $bgs = [], $bg,
+				k, v;
 
-			// Create BG wrapper, BGs.
-				$wrapper = document.createElement('div');
-					$wrapper.id = 'bg';
-					$body.appendChild($wrapper);
+		// Create BG wrapper, BGs.
+			$wrapper = document.createElement('div');
+				$wrapper.id = 'bg';
+				$body.appendChild($wrapper);
 
-				for (k in settings.images) {
+			for (k in settings.images) {
 
-					// Create BG.
-						$bg = document.createElement('div');
-							$bg.style.backgroundImage = 'url("' + k + '")';
-							$bg.style.backgroundPosition = settings.images[k];
-							$wrapper.appendChild($bg);
+				// Create BG.
+					$bg = document.createElement('div');
+						$bg.style.backgroundImage = 'url("' + k + '")';
+						$bg.style.backgroundPosition = settings.images[k];
+						$wrapper.appendChild($bg);
 
-					// Add it to array.
-						$bgs.push($bg);
+				// Add it to array.
+					$bgs.push($bg);
 
-				}
+			}
 
-			// Main loop.
-				$bgs[pos].classList.add('visible');
-				$bgs[pos].classList.add('top');
+		// Main loop.
+			$bgs[pos].classList.add('visible');
+			$bgs[pos].classList.add('top');
 
-				// Bail if we only have a single BG or the client doesn't support transitions.
-					if ($bgs.length == 1
-					||	!canUse('transition'))
-						return;
+			// Bail if we only have a single BG or the client doesn't support transitions.
+				if ($bgs.length == 1
+				||	!canUse('transition'))
+					return;
 
-				window.setInterval(function() {
+			window.setInterval(function() {
 
-					lastPos = pos;
-					pos++;
+				lastPos = pos;
+				pos++;
 
-					// Wrap to beginning if necessary.
-						if (pos >= $bgs.length)
-							pos = 0;
+				// Wrap to beginning if necessary.
+					if (pos >= $bgs.length)
+						pos = 0;
 
-					// Swap top images.
-						$bgs[lastPos].classList.remove('top');
-						$bgs[pos].classList.add('visible');
-						$bgs[pos].classList.add('top');
+				// Swap top images.
+					$bgs[lastPos].classList.remove('top');
+					$bgs[pos].classList.add('visible');
+					$bgs[pos].classList.add('top');
 
-					// Hide last image after a short delay.
-						window.setTimeout(function() {
-							$bgs[lastPos].classList.remove('visible');
-						}, settings.delay / 2);
+				// Hide last image after a short delay.
+					window.setTimeout(function() {
+						$bgs[lastPos].classList.remove('visible');
+					}, settings.delay / 2);
 
-				}, settings.delay);
+			}, settings.delay);
 
-		})();
+	})();
 
 	// Signup Form.
-		(function() {
+	(function() {
 
-			var form = document.querySelectorAll('#signup-form')[0];
+		var form = document.querySelectorAll('#signup-form')[0];
 
-			if (!('addEventListener' in form))
-				return;
+		if (!('addEventListener' in form))
+			return;
 
-			var message = document.querySelectorAll('#form-status')[0];
-			message._show = function(type, text) {
+		var message = document.querySelectorAll('#form-status')[0];
+		message._show = function(type, text) {
 
-				message.innerHTML = text;
-				message.className = 'message';
-				message.classList.add(type);
-				message.classList.add('visible');
+			message.innerHTML = text;
+			message.className = 'message';
+			message.classList.add(type);
+			message.classList.add('visible');
 
-				window.setTimeout(function() {
-					message._hide();
-				}, 3000);
+			window.setTimeout(function() {
+				message._hide();
+			}, 3000);
 
-			};
-			message._hide = function() {
-				message.classList.remove('visible');
-			};
+		};
+		message._hide = function() {
+			message.classList.remove('visible');
+		};
 
-			form.addEventListener('submit', async function(event) {
+		form.addEventListener('submit', async function(event) {
 
-				event.preventDefault();
+			event.preventDefault();
 
-				var data = new FormData(event.target);
-				fetch(event.target.action, {
-					method: form.method,
-					body: data,
-					headers: {
-						'Accept': 'application/json'
-					}
-				}).then(response => {
-					if (response.ok) {
-						message._show('success', 'Thanks for your enquiry');
-						form.reset()
-					} else {
-						response.json().then(data => {
-							if (Object.hasOwn(data, 'errors')) {
-								message._show('failure', data['errors'].map(error => error["message"]).join(", "));
-							} else {
-								message._show('failure', 'Oops! There was a problem submitting your enquiry');
-							}
-						})
-					}
-				}).catch(error => {
-					message._show('failure', 'Oops! There was a problem submitting your enquiry');
-				});
-				
+			var data = new FormData(event.target);
+			fetch(event.target.action, {
+				method: form.method,
+				body: data,
+				headers: {
+					'Accept': 'application/json'
+				}
+			}).then(response => {
+				if (response.ok) {
+					message._show('success', 'Thanks for your enquiry');
+					form.reset()
+				} else {
+					response.json().then(data => {
+						if (Object.hasOwn(data, 'errors')) {
+							message._show('failure', data['errors'].map(error => error["message"]).join(", "));
+						} else {
+							message._show('failure', 'Oops! There was a problem submitting your enquiry');
+						}
+					})
+				}
+			}).catch(error => {
+				message._show('failure', 'Oops! There was a problem submitting your enquiry');
 			});
+			
+		});
 
-		})();
+	})();
 
 })();
