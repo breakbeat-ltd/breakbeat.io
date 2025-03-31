@@ -354,8 +354,12 @@ hr {
 section.special, article.special {
   text-align: center; }
 
+header h1, header h2 {
+  color: rgba(255, 255, 255, 0.8);
+}
+
 header p {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.6);
   position: relative;
   margin: 0 0 1.5em 0; }
 
@@ -376,13 +380,13 @@ header h6 + p {
   margin-top: -0.6em;
   line-height: 1.5em; }
 
-@media screen and (max-width: 980px) {
+/* @media screen and (max-width: 980px) {
   header br {
     display: none; } }
 
 @media screen and (max-width: 736px) {
   header br {
-    display: inline; } }
+    display: inline; } } */
 
 @media screen and (max-width: 480px) {
   header br {
@@ -797,6 +801,26 @@ button,
 @media screen and (max-width: 480px) {
   #header {
     margin: 0 0 1em 0; } }
+
+#breakbeat-logo {
+  width: 550px
+}
+
+@media screen and (max-width: 1280px) {
+  #breakbeat-logo {
+    width: 475px } }
+
+@media screen and (max-width: 980px) {
+  #breakbeat-logo {
+    width: 450px } }
+
+@media screen and (max-width: 736px) {
+  #breakbeat-logo {
+    width: 430px } }
+
+@media screen and (max-width: 480px) {
+  #breakbeat-logo {
+    width: 100% } }
 
 /* Signup Form */
 #signup-form {
